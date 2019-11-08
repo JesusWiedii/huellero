@@ -10,7 +10,7 @@
     <div id="cabecera" class="row">
         <div class="col-xs-4 col-md-4"><img src="img/verticalwiedii.svg" alt="" id="imgwiedii"></div>
         <div class="col-xs-4 col-md-4"><button id="bini" type="button" class="">Inicio</button></div>
-        <div class="col-xs-4 col-md-4"><button id="bini" type="button" class="">Volver</button></div>
+        <div class="col-xs-4 col-md-4"><?php include "include/reloj.php"?></div>
     </div>
 </head>
 
@@ -25,12 +25,12 @@
             <tr>
                 <td>
                     <table>
-                        <tr><td><button type="button" id="lunch">Entrar a almorzar</button></td></tr>
-                        <tr><td><button type="button"id="lunch">Salir de almorzar</button></td></tr>
+                        <tr><td><button type="button" id="lunch">Va a almorzar</button></td></tr>
+                        <tr><td><button type="button"id="lunch">Viene de almorzar</button></td></tr>
                     </table>
                 </td>
                 <td><button id="badmin" type="button" class=""><img src="img/engrana.svg" alt="" id="eadmin"></button></td>
-                <td><button id="menuusu" type="button" class="">Correo</button></td>
+                <td><button id="badmin" type="button" class=""><img src="img/correo2.svg" alt="" id="eadmin"></button></td>
             </tr>
         </table>
     </div>
@@ -38,6 +38,7 @@
 <footer>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="js/reloj.js" ></script>
 </footer>
 
 </html>

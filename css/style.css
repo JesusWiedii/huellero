@@ -94,15 +94,39 @@ body{
   font-size: 5vw;
   border-radius: 12px;
 }
+#icorreo {
+  margin-top: 2vw;
+  background-color: transparent; 
+  border: 4px solid rgb(2, 181, 222);
+  color: rgb(2, 181, 222);
+  padding: 3vh 3vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 5vw;
+  border-radius: 12px;
+}
+#binh {
+  margin-top: 1vw;
+  background-color: transparent; 
+  border: 4px solid rgb(2, 181, 222);
+  color: rgb(2, 181, 222);
+  padding: 3vw 2vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 5vw;
+  border-radius: 12px;
+}
 
-#badmin:active{
+#badmin:active,#icorreo:active{
   background-color: rgb(2, 181, 222);
   color: rgb(2, 181, 222);
 }
-#menuusu:active,#mensajeb:active,#bini:active,#lunch:active{
+#binh:active,#menuusu:active,#mensajeb:active,#bini:active,#lunch:active{
   background-color: rgb(2, 181, 222);
   color: white} 
-#bini:focus,#menuusu:focus,#mensajeb:focus,#badmin:focus,#lunch:focus {outline:0;}
+#binh:focus,#bini:focus,#menuusu:focus,#mensajeb:focus,#badmin:focus,#lunch:focus {outline:0;}
 
 /* inicio reloj*/
 * {
@@ -110,21 +134,17 @@ body{
   padding: 0;
   box-sizing: border-box;
 }
-html,body {
-  height: 100%;
-}
-
 .contenedor {
   width: 5vw;
   height: 10vw;
-  position: relative;
-  max-width: 1000px;
+  position: absolute;
+  max-width: 10vw;
   margin: auto;
   background: transparent;
 }
 .widget {
-  width: 40%;
-  height: 40%;
+  width: 2vw;
+  height: 2vw;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -134,23 +154,25 @@ html,body {
 }
 .widget p {
   display: inline-block;
-  line-height: 1em;
+  line-height: 2vw;
+  margin: 10 6 10px;
+  color: rgb(2, 181, 222);
 }
 .fecha {
   font-family: arial;
-  text-align: center;
+  text-align: start;
   font-size: 3vw;
   margin-bottom: 5px;
   background: transparent;
   padding: 1vw;
-  width: 100%;
+  width: 2vw;
 }
 .reloj {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  width: 100%;
+  width: 2vw;
   padding: 1vw;
   font-size: 3vw;
-  text-align: center;
+  text-align: start;
   background: transparent;
 }
 .reloj .cajaSegundos {
@@ -158,5 +180,21 @@ html,body {
 }
 .reloj .ampm, .reloj .segundos{
   display: block;
-  font-size: 2wv;
+  font-size: 1vw;
 }/* finalizo reloj*/
+#dfusu{
+overflow-x: auto;
+}
+#fusu{
+ border-spacing: 0vw;
+}
+#fusu {
+  margin-top: 2px;
+  margin-bottom: 1px;
+  font-size: 4vw;
+  color: rgb(2, 181, 222);
+  text-align: left;
+}
+#fmensaje {
+  text-align: center;
+}

@@ -18,8 +18,8 @@ $(function(){
           $pDia = $("#dia"),
           $pMes = $("#mes"),
           $pAnio = $("#anio");
-      var semana = ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
-      var meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      var semana = ['Do','Lu','Ma','Mi','Ju','Vi','Sa'];
+      var meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
       
       $pDiaSemana.text(semana[diaSemana]);
       $pDia.text(dia);
