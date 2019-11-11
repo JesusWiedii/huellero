@@ -2,24 +2,24 @@ body{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 5vw;
     line-height: 1.42857143;
-    color: #aaaaaa;
+    color: white;
     
    
 }
-#cabecera{
+.cabecera{
     width:100%;
     height:auto;
     margin-left:0px;
     text-align: center;
     
 }
-#imgwiedii{
+.imgwiedii{
     width: 50%;  
     height: 11vw;
     margin-top: 1vw;
 }
 
-#bini {
+.bini {
     margin-top: 1vw;
     background-color: transparent; 
     border: 4px solid rgb(2, 181, 222);
@@ -32,7 +32,7 @@ body{
     border-radius: 12px;
   }
 
-  #menuusu {
+  .menuusu {
     margin-top: 2vw;
     background-color: transparent; 
     border: 4px solid rgb(2, 181, 222);
@@ -46,13 +46,13 @@ body{
   }
 
     
-#eadmin{
+.eadmin{
     width: 100%;  
     height: 17vw;
     margin-top: 1vw;
     text-align: center;
     }
-#badmin {
+.badmin {
       margin-top: 2vw;
       background-color:transparent; 
       border: none;
@@ -63,7 +63,7 @@ body{
       font-size: 7vw;
       border-radius: 12px;
     }
-#mensajeb {
+.mensajeb {
   margin-top: 2vw;
   background-color: white; 
   border: none;
@@ -76,13 +76,13 @@ body{
   border-radius: 12px;
 }
 
-#txtmb{
-  font-size: 5vw;
+.txtmb{
+  font-size: 4vw;
   text-align: center;
   color: white;
 }
 
-#lunch {
+.lunch {
   margin-top: 2vw;
   background-color: transparent; 
   border: 4px solid rgb(2, 181, 222);
@@ -94,7 +94,7 @@ body{
   font-size: 5vw;
   border-radius: 12px;
 }
-#icorreo {
+.icorreo {
   margin-top: 2vw;
   background-color: transparent; 
   border: 4px solid rgb(2, 181, 222);
@@ -106,7 +106,7 @@ body{
   font-size: 5vw;
   border-radius: 12px;
 }
-#binh {
+.binh {
   margin-top: 1vw;
   background-color: transparent; 
   border: 4px solid rgb(2, 181, 222);
@@ -118,16 +118,30 @@ body{
   font-size: 5vw;
   border-radius: 12px;
 }
-
-#badmin:active,#icorreo:active{
-  background-color: rgb(2, 181, 222);
+.bvolver {
+  margin-top: 0vw;
+  background-color: transparent; 
+  border: 4px solid rgb(2, 181, 222);
   color: rgb(2, 181, 222);
+  padding: 3vw 2vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 5vw;
+  border-radius: 12px;
 }
-#binh:active,#menuusu:active,#mensajeb:active,#bini:active,#lunch:active{
+.bingusu{
+  margin-top: 3vw;
+}
+.bcorreo:active.btrebutt:active,.bvolver:active,.badmin:active,.icorreo:active{
+  background-color: rgb(2, 181, 222);
+  color: rgb(45, 211, 248);
+}
+.binh:active,.menuusu:active,.mensajeb:active,.bini:active,.lunch:active{
   background-color: rgb(2, 181, 222);
   color: white} 
-#binh:focus,#bini:focus,#menuusu:focus,#mensajeb:focus,#badmin:focus,#lunch:focus {outline:0;}
-
+.bvolver:focus,.binh:focus,.bini:focus,.menuusu:focus,.mensajeb:focus,.badmin:focus,.lunch:focus {outline:0;}
+.button:focus{outline: 0;}
 /* inicio reloj*/
 * {
   margin: 0;
@@ -182,19 +196,130 @@ body{
   display: block;
   font-size: 1vw;
 }/* finalizo reloj*/
-#dfusu{
-overflow-x: auto;
-}
-#fusu{
- border-spacing: 0vw;
-}
-#fusu {
-  margin-top: 2px;
-  margin-bottom: 1px;
-  font-size: 4vw;
-  color: rgb(2, 181, 222);
+
+
+.fusu {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 10vw;
+  color: white;
   text-align: left;
+  border-spacing: 0vw;
+  overflow-x: auto;
+  width: 100%;
+  height: 10vh;
 }
-#fmensaje {
+.fmensaje {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 20vw;
+  color: white;
   text-align: center;
+  border-spacing: 0vw;
+  overflow-x: auto;
+  width: 100%;
+  height: auto;
 }
+.fmensaje2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 9vw;
+  color: white;
+  text-align: center;
+  border-spacing: 0vw;
+  overflow-x: auto;
+  width: 100%;
+  height: auto;
+}
+.ingusu {
+  margin-top: 3vw;
+  margin-bottom: 0px;
+  font-size: 5vw;
+  text-align: center;
+  border-spacing: 0vw;
+  overflow-x: auto;
+  width: 100%;
+  height: auto;
+}
+.txtusu {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 4vw;
+  color: white;
+  text-align: center;
+  border-spacing: 0vw;
+  overflow-x: auto;
+  width: 100%;
+  height: auto;
+}
+input{
+  background-color: rgba(238, 244, 245, 0.363);
+  color: white;
+}
+::placeholder { 
+  color: white;
+  opacity: 1; 
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.h3, h3{
+  font-size: 5vw;
+}
+.bcorreo {
+  margin-top: 0vw;
+  background-color:transparent; 
+  border: none;
+  padding: 0vh 0vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 7vw;
+  border-radius: 12px;
+}
+.trebutt{
+  width:100%;
+  height:5vh;
+  margin-left:0px;
+  align-items: center;
+  
+  
+}
+.icorreo2{
+  width: 100%;  
+  height: 14vw;
+  margin-top: 0vw;
+  text-align: center;
+  margin-top: 0vw;
+  background-color: transparent; 
+  border: 4px solid rgb(2, 181, 222);
+  color: rgb(2, 181, 222);
+  padding: 0vh vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 5vw;
+  border-radius: 12px;
+  }
+  .btrebutt {
+    margin-top: 0vw;
+    background-color: transparent; 
+    border: 4px solid rgb(2, 181, 222);
+    color: rgb(2, 181, 222);
+    padding: 3vw 2vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5vw;
+    border-radius: 12px;
+  }
+  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, 
+  .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+    text-align: center;
+  }
+  .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, 
+  .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    text-align: center;
+  }

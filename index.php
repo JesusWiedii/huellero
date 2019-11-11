@@ -7,9 +7,9 @@
     <title>Huellero</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <div id="cabecera" class="row">
-        <div class="col-xs-4 col-md-4"><img src="img/verticalwiedii.svg" alt="" id="imgwiedii"></div>
-        <div class="col-xs-4 col-md-4"><button id="bini" type="button" class="">Inicio</button></div>
+    <div class="cabecera" class="row">
+        <div class="col-xs-4 col-md-4"><img src="img/verticalwiedii.svg" alt="" class="imgwiedii"></div>
+        <div class="col-xs-4 col-md-4"> <a href="#"><button class="bini" type="button" class="" >Inicio</button></a></div>
         <div class="col-xs-4 col-md-4"><?php include "include/reloj.php"?></div>
     </div>
 </head>
@@ -18,26 +18,26 @@
     <div>
         <table>
             <tr>
-                <td><button id="menuusu" type="button" class="">Entrada</button></td>
-                <td><h2 id="txtmb">Bienvenido, Por favor marque la opcion seguido de la huella.</h2></td>
-                <td><button id="menuusu" type="button" class="">Salida</button></td>
+                <td><button class="menuusu" type="button" class="">Entrada</button></td>
+                <td><h2 class="txtmb">Bienvenido, Por favor marque la opcion seguido de la huella.</h2></td>
+                <td><button class="menuusu" type="button" class="">Salida</button></td>
             </tr>
             <tr>
                 <td>
                     <table>
-                        <tr><td><button type="button" id="lunch">Va a almorzar</button></td></tr>
-                        <tr><td><button type="button"id="lunch">Viene de almorzar</button></td></tr>
+                        <tr><td><button type="button" class="lunch">Va a almorzar</button></td></tr>
+                        <tr><td><button type="button"class="lunch">Viene de almorzar</button></td></tr>
                     </table>
                 </td>
-                <td><button id="badmin" type="button" class=""><img src="img/engrana.svg" alt="" id="eadmin"></button></td>
-                <td><button id="badmin" type="button" class=""><img src="img/correo2.svg" alt="" id="eadmin"></button></td>
+                <td><a href="include/administrador.php"><button class="badmin" type="button" class="" ><img src="img/engrana.svg" alt="" class="eadmin"></button></a></td>
+                <td><button class="badmin" type="button" class=""><img src="img/correo2.svg" alt="" class="eadmin"></button></td>
             </tr>
         </table>
     </div>
 </body>
 <footer>
-<script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/reloj.js" ></script>
 </footer>
 
