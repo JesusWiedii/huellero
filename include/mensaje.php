@@ -1,6 +1,7 @@
 <?php include "header.php"; ?>
 <body background="../img/fondo1.jpeg">
 <div>
+if
 <table class="fmensaje">
     <tr>
         <td>
