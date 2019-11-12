@@ -8,7 +8,7 @@ if(isset($_POST['guardar_persona'])){
     $huella=$_POST['huellanuevo'];
     
     if(!empty($nombre) && !empty($correo) && !empty($huella)){
-        
+        $repetido= mysqli_query($conn,"");
         if (empty($repetido)){
             $query ="INSERT INTO usuarios(nombre_usu, correo, equipo, huella) 
             VALUES('$nombre', '$correo', '$equipo','$huella')";
