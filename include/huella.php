@@ -1,5 +1,5 @@
 <?php include "header.php"; ?>
-<body background="../img/fondo1.jpeg">
+
 
 <div >
     <table class="fusu">
@@ -31,8 +31,4 @@
    
 </div>
 
-
-
-</body>
 <?php include "footer.php"; ?>
-</html>

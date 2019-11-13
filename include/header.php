@@ -20,3 +20,4 @@
     </div>
    
 </head>
+<body background="../img/fondo1.jpeg">

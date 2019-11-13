@@ -1,5 +1,5 @@
 <?php include "header.php"; ?>
-<body background="../img/fondo1.jpeg">
+
 
 <div class="tabs-wrapper ">
         <input type="radio" name="tab" id="tab1" checked="checked">
@@ -29,11 +29,11 @@
   
       <p></p>
     </div>
-    <form action="../save_task.php" method="post">
+    <form action="save_task.php" method="post">
     <div id="tab-body-2" class="tab-body">
       <p>Nombre completo: <input type="text" name="nombrenuevo" id="nombrenuevo">, Correo:
         <input type="text" name="correonuevo" id="correonuevo">, Equipo: 
-        <select class="custom-select" name="teams" ide="teams">
+        <select class="custom-select" name="teams" id="teams">
         <option value="Colocolo">Colocolo</option> 
         <option value="Lions">Lions</option> 
         <option value="Margay">Margay</option>
@@ -50,9 +50,9 @@
         <thead>
           <tr>
             <th>Nombre usuario</th>
-            <th>Huella</th>
-            <th>Equipo</th>
             <th>Correo</th>
+            <th>Equipo</th>
+            <th>Huella</th>
             <th>Fecha</th>
             <th>Accion</th>
           </tr>
@@ -60,14 +60,14 @@
         <tbody>
 
           <?php
-              $query = "SELECT * FROM usuarios WHERE estado=1 ";
+              $query = "SELECT * FROM usuarios WHERE estado=1 ORDER BY nombre_usu ASC";
               $result_tasks = mysqli_query($conn, $query);  
               while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                   <tr>
                     <td><?php echo $row['nombre_usu'];?></td>
-                    <td><?php echo $row['huella']; ?></td>
-                    <td><?php echo $row['equipo']; ?></td>
                     <td><?php echo $row['correo']; ?></td>
+                    <td><?php echo $row['equipo']; ?></td>
+                    <td><?php echo $row['huella']; ?></td>
                     <td><?php echo $row['fecha']; ?></td>
                     <td>
               <a href="edit.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
@@ -90,4 +90,3 @@
 </div>
 
 <?php include "footer.php"; ?>
-</html>

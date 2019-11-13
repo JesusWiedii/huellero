@@ -1,5 +1,5 @@
 <?php include "header.php"; ?>
-<body background="../img/fondo1.jpeg">
+
 <div>
     <form action="../admin.php" method="post" >
             <input class="ingusu"type=text placeholder=Usuario name=txtusuario autofocus/>
@@ -9,6 +9,5 @@
     </form>
 </div>
 
-</body>
+
 <?php include "footer.php"; ?>
-</html>

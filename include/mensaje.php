@@ -1,5 +1,5 @@
 <?php include "header.php"; ?>
-<body background="../img/fondo1.jpeg">
+
 <div>
 if
 <table class="fmensaje">
@@ -19,6 +19,5 @@ if
 </table>
 </div>
 
-</body>
+
 <?php include "footer.php"; ?>
-</html>
