@@ -3,6 +3,7 @@
     'localhost',
     'root',
     'root',
-    'huellero');
-
+    'huellero')
+    or die(mysqli_erro($mysqli));
+    
 ?>

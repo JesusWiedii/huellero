@@ -33,7 +33,7 @@
     <div id="tab-body-2" class="tab-body">
       <p>Nombre completo: <input type="text" name="nombrenuevo" id="nombrenuevo">, Correo:
         <input type="text" name="correonuevo" id="correonuevo">, Equipo: 
-        <select class="custom-select" name="teams">
+        <select class="custom-select" name="teams" ide="teams">
         <option value="Colocolo">Colocolo</option> 
         <option value="Lions">Lions</option> 
         <option value="Margay">Margay</option>
@@ -43,15 +43,51 @@
         <option value="Puma">Puma</option> 
         </select>, Huella: <input type="text" name="huellanuevo" id="huellanuevo">.
         <input type="submit" class="bguarda btn" name='guardar_persona' value="Guardar">
+        <input type="submit" class="bguarda btn" name='actualizar' value="Actualizar">
+        <input type="submit" class="bguarda btn" name='deshabilitar' value="Deshabilitar">
         </p>
-      
+        <table class="table table-bordered" style="font-size: 2vw;"id="tablausu">
+        <thead>
+          <tr>
+            <th>Nombre usuario</th>
+            <th>Huella</th>
+            <th>Equipo</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <?php
+              $query = "SELECT * FROM usuarios WHERE estado=1 ";
+              $result_tasks = mysqli_query($conn, $query);  
+              while($row = mysqli_fetch_assoc($result_tasks)) { ?>
+                  <tr>
+                    <td><?php echo $row['nombre_usu'];?></td>
+                    <td><?php echo $row['huella']; ?></td>
+                    <td><?php echo $row['equipo']; ?></td>
+                    <td><?php echo $row['correo']; ?></td>
+                    <td><?php echo $row['fecha']; ?></td>
+                    <td>
+              <a href="edit.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                <i class="fas fa-marker"></i>
+              </a>
+              <a href="delete_task.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+              </a>
+            </td></tr>
+              <?php } ?>
+        </tbody>
+      </table>
+
+
+
     </div></form>
  
     </div>
   </div>
 </div>
-<?php
 
-?>
 <?php include "footer.php"; ?>
 </html>
