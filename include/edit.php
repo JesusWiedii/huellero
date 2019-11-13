@@ -62,6 +62,15 @@ if (isset($_POST['update'])) {
         <div class="form-group">
         <textarea name="huella" class="form-control" ><?php echo $huella;?></textarea>
         </div>
+        <input type="radio" name="transporte2" value="1">Coche
+
+<br>
+
+<input type="radio" name="transporte2" value="2" checked>Avión
+
+<br>
+
+<input type="radio" name="transporte2" value="3">Tren
         <button class="btn-success" name="update">
           Actualizar
 </button>
