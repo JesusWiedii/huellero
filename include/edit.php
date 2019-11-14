@@ -8,14 +8,15 @@ $correo='';
 
 if  (isset($_GET['id'])) {
   $id = $_GET['id'];
-  $query = "SELECT * FROM usuarios WHERE id=$id";
+  $query = "SELECT * FROM usuarios u, equipos e WHERE u.id=$id and u.Id_equipo=e.Id_equipo";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_array($result);
     $nombre = $row['nombre_usu'];
     $huella = $row['huella'];
-    $equipo=$row['equipo'];
+    $equipo=$row['nombre_equipo'];
     $correo=$row['correo'];
+    $estado=$row['estado'];
   }
 }
 
@@ -25,9 +26,11 @@ if (isset($_POST['update'])) {
   $huella = $_POST['huella'];
   $equipo=$_POST['equipo'];
   $correo=$_POST['correo'];
+  $deshab=$_POST['desha'];
+  
 
   $query = "UPDATE usuarios set nombre_usu = '$nombre', 
-  huella='$huella', equipo = '$equipo', correo='$correo' WHERE id=$id";
+  huella='$huella', Id_equipo = '$equipo', correo='$correo', estado='$deshab' WHERE id=$id";
   mysqli_query($conn, $query);
   echo "<script>
             alert('Guardado de forma correcta');location.href='admuse.php'</script>";
@@ -40,40 +43,33 @@ if (isset($_POST['update'])) {
 <?php include('header.php'); ?>
 <div class="container p-4">
   <div class="row">
-    <div class="col-md-4 mx-auto">
+    <div class="">
       <div class="card card-body">
       <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
-        <div class="form-group">
-          <input name="nombre" type="text" class="form-control" value="<?php echo $nombre; ?>" 
-          placeholder="Actualizar fecha">
-          <input name="correo" type="text" class="form-control" value="<?php echo $correo; ?>" 
+        <div class="form-group" style="margin-top: 15vw;">
+          Nombre completo:
+          <input name="nombre" type="text"  value="<?php echo $nombre; ?>" 
+          placeholder="Actualizar nombre">
+          <br>
+          Correo:
+          <input name="correo" type="text"  value="<?php echo $correo; ?>" 
           placeholder="Actualizar correo">
-          <select name="equipo"class="custom-select" value="<?php echo $equipo; ?>" id="teams">
+          <br>
+          Equipo:
+          <select name="equipo" value="<?php echo $equipo; ?>" id="teams">
           <option selected='selected'><?php echo $equipo; ?></option>
-        <option value="Colocolo">Colocolo</option> 
-        <option value="Lions">Lions</option> 
-        <option value="Margay">Margay</option>
-        <option value="Geofrray">Geofrray</option> 
-        <option value="Ceetah">Cheetah</option> 
-        <option value="Ligers">Ligers</option> 
-        <option value="Puma">Puma</option> 
+          <?php include "equipos.php"; ?>
         </select>
+        <br>
+        Huella:
+        <input name="huella" value="<?php echo $huella;?>">
+        <br>
+        <input type="radio" name="desha" class="chkbox" value="No">Deshabilitado
+        <input type="radio" name="desha" class="chkbox" value="Si" checked>Habilitado
+        <br>
+        <button class="bguarda btn" name="update">
+          Actualizar</button>
         </div>
-        <div class="form-group">
-        <textarea name="huella" class="form-control" ><?php echo $huella;?></textarea>
-        </div>
-        <input type="radio" name="transporte2" value="1">Coche
-
-<br>
-
-<input type="radio" name="transporte2" value="2" checked>Avión
-
-<br>
-
-<input type="radio" name="transporte2" value="3">Tren
-        <button class="btn-success" name="update">
-          Actualizar
-</button>
       </form>
       </div>
     </div>
