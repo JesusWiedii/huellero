@@ -17,8 +17,6 @@
         <?php include "equipos.php"; ?>
         </select>, Huella: <input type="text" name="huellanuevo" id="huellanuevo">.
         <input type="submit" class="bguarda btn" name='guardar_persona' value="Guardar">
-        <!-- <input type="submit" class="bguarda btn" name='actualizar' value="Actualizar">
-        <input type="submit" class="bguarda btn" name='deshabilitar' value="Deshabilitar"> -->
         </p>
         <table class="table table-bordered" style="font-size: 2vw;"id="tablausu">
         <thead>

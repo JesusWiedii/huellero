@@ -4,6 +4,5 @@
     'root',
     'root',
     'huellero')
-    or die(mysqli_erro($mysqli));
-    
+    or die(mysqli_erro($mysqli));   
 ?>

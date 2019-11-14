@@ -14,6 +14,8 @@ if  (isset($_GET['id'])) {
     $hora_salida= $row['hora_salida'];
     $equipo=$row['nombre_equipo'];
   }
+  else echo "<script>
+         alert('No ha encontrado nada, error en la base de datos');window.history.back()</script>"; 
 }
 
 if (isset($_POST['updatet'])) {
