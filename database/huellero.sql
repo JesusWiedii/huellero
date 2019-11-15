@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 12-11-2019 a las 21:19:50
+-- Tiempo de generación: 15-11-2019 a las 21:24:37
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.3.8
 
@@ -23,6 +23,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `equipos`
+--
+
+CREATE TABLE `equipos` (
+  `Id_equipo` int(11) NOT NULL,
+  `nombre_equipo` varchar(255) CHARACTER SET armscii8 NOT NULL,
+  `hora_entrada` time NOT NULL,
+  `hora_salida` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `equipos`
+--
+
+INSERT INTO `equipos` (`Id_equipo`, `nombre_equipo`, `hora_entrada`, `hora_salida`) VALUES
+(1, 'Colocolo', '13:00:00', '17:00:00'),
+(2, 'Lions', '09:00:00', '17:00:00'),
+(3, 'Margay', '07:00:00', '17:00:00'),
+(4, 'Geofrray', '07:00:00', '17:00:00'),
+(5, 'Cheetah', '07:00:00', '17:00:00'),
+(6, 'Ligers', '07:00:00', '17:00:00'),
+(7, 'Puma', '07:00:00', '17:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -30,41 +56,68 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre_usu` varchar(255) DEFAULT NULL,
   `huella` varchar(255) NOT NULL,
-  `equipo` varchar(255) NOT NULL,
+  `contraseña` varchar(255) NOT NULL,
+  `Id_equipo` int(11) NOT NULL,
   `correo` varchar(255) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `estado` char(2) NOT NULL,
+  `admin` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre_usu`, `huella`, `equipo`, `correo`, `fecha`) VALUES
-(17, 'dscadsVZCV', '312435', 'Colocolo', 'gfeg', '2019-11-12 19:00:01'),
-(20, 'dscadsVZCV', '12344545243', 'Colocolo', 'dsafa', '2019-11-12 19:07:24'),
-(22, 'dscadsVZCV', '3124356', 'Colocolo', 'dsafa', '2019-11-12 19:14:34'),
-(40, 'dscadsVZCV', '31243567', 'Colocolo', 'dsafa', '2019-11-12 19:34:38');
+INSERT INTO `usuarios` (`id`, `nombre_usu`, `huella`, `contraseña`, `Id_equipo`, `correo`, `fecha`, `estado`, `admin`) VALUES
+(113, 'dscadsVZCV', '3423', '', 2, 'holi', '2019-11-14 14:17:45', 'Si', ''),
+(115, 'fadf', '31243576', '', 1, 'dsafa', '2019-11-14 20:06:19', 'Si', ''),
+(116, 'dafd5', '1234', '', 4, 'fqwerwe', '2019-11-14 20:24:51', 'Si', ''),
+(117, 'dscadsVZCV', '123', '', 1, 'dsafa', '2019-11-14 20:44:05', 'Si', '');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `equipos`
+--
+ALTER TABLE `equipos`
+  ADD PRIMARY KEY (`Id_equipo`),
+  ADD UNIQUE KEY `nombre_equipo` (`nombre_equipo`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `huella` (`huella`);
+  ADD UNIQUE KEY `huella` (`huella`),
+  ADD KEY `id_equipo` (`Id_equipo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `equipos`
+--
+ALTER TABLE `equipos`
+  MODIFY `Id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Id_equipo`) REFERENCES `equipos` (`Id_equipo`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

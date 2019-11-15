@@ -20,7 +20,7 @@ require 'PHPMailer/src/SMTP.php';
         
             //Recipients
             $mail->setFrom('huellero.wiedii@gmail.com', 'Hjesus');
-            $mail->addAddress('sergio.noriega@wiedii.co', 'Jesus Becerra');     // Add a recipient
+            $mail->addAddress('becerra.jesusantonio@.com', 'Jesus Becerra');     // Add a recipient
            
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
