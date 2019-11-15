@@ -9,41 +9,53 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <div class="cabecera" class="row">
+        <div class="col-xs-4 col-md-4"></div>
         <div class="col-xs-4 col-md-4"><img src="img/verticalwiedii.svg" alt="" class="imgwiedii"></div>
-        <div class="col-xs-4 col-md-4">
-            <a href="#"><button class="bini" type="button" class="">Inicio</button></a></div>
         <div class="col-xs-4 col-md-4"><?php include "include/reloj.php" ?></div>
     </div>
 </head>
 
 <body background="img/fondo1.jpeg">
-    <div>
-        <table>
-            <tr>
-                <td><button class="menuusu" type="button" class="">Entrada</button></td>
-                <td>
-                    <h2 class="txtmb">Bienvenido, Por favor marque la opcion seguido de la huella.</h2>
-                </td>
-                <td><button class="menuusu" type="button" class="">Salida</button></td>
-            </tr>
-            <tr>
-                <td>
-                    <table>
-                        <tr>
-                            <td><button type="button" class="lunch">Va a almorzar</button></td>
-                        </tr>
-                        <tr>
-                            <td><button type="button" class="lunch">Viene de almorzar</button></td>
-                        </tr>
-                    </table>
-                </td>
-                <td><a href="include/ingadmin.php"><button class="badmin" type="button" class="">
-                            <img src="img/engrana.svg" alt="" class="eadmin"></button></a></td>
-                <td><button class="badmin" type="button" class="">
-                        <img src="img/correo2.svg" alt="" class="eadmin"></button></td>
-            </tr>
-        </table>
-    </div>
+    <form action="include/registro.php" method="post">
+        <br><br>
+        <div class="row">
+            <div class="col-xs-4 col-md-4">
+                <input type="submit" name="opera" class="menuusu" value="Entrada">
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <h2 class="txtmb" style="margin-top:5vw;">Usuario
+                    <br><input type="text" name="user" style="width:70%;text-align:center;" autofocus>
+                </h2>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <input type="submit" name="opera" class="menuusu" value="Salida">
+            </div>
+        
+        
+            <div class="col-xs-6 col-md-6">
+                <input type="submit" mane="opera" class="lunch" value="Va a almorzar">
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <input type="submit" name="opera" class="lunch" value="Viene de almorzar">
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <a href="include/ingadmin.php"><button class="badmin" type="button" class="">
+                        <img src="img/engrana.svg" alt="" class="eadmin"></button></a>
+            </div>
+            <div class="col-xs-6 col-md-6">
+        <button type="submit"name="opera" value="Enviar al correo"style="
+    background-color: transparent;
+    color: transparent;
+    border-color: transparent;
+"><img src="img/correo.svg" alt="" style="
+    width: 30vw;
+    margin-top: 2vw;
+"></button>
+                
+                
+            </div>
+            </div>
+    </form>
 </body>
 <footer>
     <script src="js/jquery.min.js"></script>
