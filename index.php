@@ -1,4 +1,4 @@
-<?php include("db.php")?>
+<?php include("db.php") ?>
 <html lang="es">
 
 <head>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-xs-4 col-md-4">
                 <h2 class="txtmb" style="margin-top:5vw;">Usuario
-                    <br><input type="text" name="user" style="width:70%;text-align:center;" autofocus>
+                    <br><input type="text" name="user" style="width:70%;text-align:center;" autofocus="autofocus">
                 </h2>
             </div>
             <div class="col-xs-4 col-md-4">
@@ -32,15 +32,15 @@
             </div>
 
 
-            <div class="col-xs-6 col-md-6">
-                <input type="submit" mane="operacion" class="lunch" value="Sale a almorzar">
+            <!-- <div class="col-xs-6 col-md-6">
+                <button type="submit" name="operacion" class="lunch" value="Olunch">Sale a almorzar</button>
             </div>
             <div class="col-xs-6 col-md-6">
-                <input type="submit" name="operacion" class="lunch" value="Entra de almorzar">
-            </div>
+                <button type="submit" name="operacion" class="lunch" value="Ilunch">Entra de almorzar</button>
+            </div> -->
             <div class="col-xs-6 col-md-6">
                 <a href="include/ingadmin.php">
-                <button class="badmin" type="button" class="">
+                    <button class="badmin" type="button" class="">
                         <img src="img/engrana.svg" alt="" class="eadmin"></button></a>
             </div>
             <div class="col-xs-6 col-md-6">
