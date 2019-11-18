@@ -2,21 +2,26 @@
 
 
 <div class="tabs-wrapper ">
-        <input type="radio" name="tab" id="tab1" checked="checked">
+        <input type="radio" class="tab1" name="tab" id="tab1" checked="checked">
         <label for="tab1" class="label-1 "><h3>Edicion de usuario</h3></label>
-        <input type="radio" name="tab" id="tab2">
+        <input type="radio" class="tab1" name="tab" id="tab2">
         <label for="tab2" class="label-2 "><h3>Edicion Equipo</h3></label>
 
         
   <div class="tab-body-wrapper">
   <form action="save_task.php" method="post">
     <div id="tab-body-1" class="tab-body">
-      <p>Nombre completo: <input type="text" name="nombrenuevo" id="nombrenuevo">, Correo:
-        <input type="text" name="correonuevo" id="correonuevo">, Equipo: 
+      <p>Nombre completo: <input type="text" name="nombrenuevo" id="nombrenuevo"><br> Correo:
+        <input type="text" name="correonuevo" id="correonuevo"> <br> Equipo: 
         <select class="custom-select" name="teams" id="teams">
         <?php include "equipos.php"; ?>
-        </select>, Huella: <input type="text" name="huellanuevo" id="huellanuevo">.
-        <input type="submit" class="bguarda btn" name='guardar_persona' value="Guardar">
+        </select> <br> Huella: <input type="text" name="huellanuevo" id="huellanuevo">
+        <br>Contraseña: <input type="text" name="contrasena" id="contrasena"> <br>
+        Administrador:
+            <input type="radio" class="chkbox" name="admin" value="No" checked >No
+            <input type="radio" class="chkbox" name="admin" value="Si" >Si
+            <br>
+            <input type="submit" class="bguarda btn" name='guardar_persona' value="Guardar">
         </p>
         <table class="table table-bordered" style="font-size: 2vw;"id="tablausu">
         <thead>
@@ -25,7 +30,7 @@
             <th>Correo</th>
             <th>Equipo</th>
             <th>Huella</th>
-            <th>Fecha</th>
+            <th>Administrador</th>
             <th>Accion</th>
             <th>Habilitado</th>
           </tr>
@@ -34,7 +39,7 @@
 
           <?php
               $query = "SELECT * FROM usuarios u, equipos e 
-              where u.Id_equipo=e.Id_equipo ORDER BY estado DESC, nombre_usu ASC";
+              where u.Id_equipo=e.Id_equipo ORDER BY admini DESC, estado DESC, nombre_usu ASC";
               $result_tasks = mysqli_query($conn, $query);  
               while($row = mysqli_fetch_assoc($result_tasks)) { ?>
                   <tr style="text-align-last: center;">
@@ -42,14 +47,17 @@
                     <td><?php echo $row['correo']; ?></td>
                     <td><?php echo $row['nombre_equipo']; ?></td>
                     <td><?php echo $row['huella']; ?></td>
-                    <td><?php echo $row['fecha']; ?></td>
+                    <td><?php echo $row['admini']; ?></td>
                     <td>
-              <a href="edit.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
-                <i class="fas fa-marker"></i>
+        
+              
+              <a href="edit.php?id=<?php echo $row['id']?>"style="background-color: transparent; 
+              border-color:transparent"> <img class="icons" src="../img/editar.svg" alt="" >
               </a>
-              <a href="delete_task.php?id=<?php echo $row['id']?>" class="btn btn-danger">
-                <i class="far fa-trash-alt"></i>
+              <a href="delete_task.php?id=<?php echo $row['id']?>"style="background-color: transparent; 
+              border-color:transparent"> <img class="icons" src="../img/Trash.svg" alt="" >
               </a>
+              
             </td>
                     <td><?php echo $row['estado']; ?></td>
                     </tr>

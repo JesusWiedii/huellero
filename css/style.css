@@ -386,9 +386,7 @@ h3 {
 .tabs-wrapper {
   margin: 0% 0% 0 00%;
 }
-.tabs-wrapper input[type="radio"] {
-  display: none;
-}
+
 .tabs-wrapper label {
   transition: background 0.4s ease-in-out, height 0.2s linear;
   display: inline-block;
@@ -485,4 +483,10 @@ textarea {
 .table > thead:first-child > tr:first-child > th {
   text-align: center;
   text-align-last: center;
+}
+.icons{
+  width: 3vw;
+}
+.tab1{
+  display: none;
 }

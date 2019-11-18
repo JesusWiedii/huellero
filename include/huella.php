@@ -26,7 +26,7 @@
         <div class="col-xs-4 col-md-4"><a href="#">
             <button class="btrebutt" type="button" class="" >OK</button></a></div>
         <div class="col-xs-4 col-md-4"><a href="../index.php"><button class="bcorreo, button" type="button" >
-            <img src="../img/correo2.svg" alt="" class="icorreo2"></a></div>
+            <img src="../img/correo.svg" alt="" class="icorreo2"></a></div>
     </div>
    
 </div>

@@ -1,37 +1,79 @@
-<?phpinclude ("../db.php");?>
+<?php include ("../db.php"); ?>
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
-        $mail = new PHPMailer(true);
-        try {
-            //Server settings
-            $mail->SMTPDebug = 0;                      // Enable verbose debug output
-            $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'huellero.wiedii@gmail.com';                     // SMTP username
-            $mail->Password   = 'huella2019wiedii';                               // SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            $mail->Port       = 587;                                    // TCP port to connect to
-        
-            //Recipients
-            $mail->setFrom('huellero.wiedii@gmail.com', 'Hjesus');
-            $mail->addAddress('becerra.jesusantonio@.com', 'Jesus Becerra');     // Add a recipient
-           
-            // Content
-            $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Here is the subject';
-            $mail->Body    = 'prueba de mensaje :v';
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        
-            $mail->send();
-            echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+
+$HOST = 'smtp.gmail.com';
+$USERNAMECORREO = 'huellero.wiedii@gmail.com';
+$PASSWORDC = 'huella2019wiedii';
+$NAMEC = 'Huellero Wiedii';
+$PORTC = 587;
+$n = $_POST['operacion'];
+$user=$_POST['user'];
+if (!empty($user)) {
+    if (isset($_POST['operacion'])) {
+        switch ($n) {
+            case Entrada:
+                $mail = new PHPMailer(true);
+                try {
+
+                    $mail->SMTPDebug = 0;
+                    $mail->isSMTP();
+                    $mail->Host       = $HOST;
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = $USERNAMECORREO;
+                    $mail->Password   = $PASSWORDC;
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port       = $PORTC;
+                    $mail->setFrom($USERNAMECORREO, $NAMEC);
+                    $mail->addAddress('jesus.becerra@wiedii.co', 'Jesus Becerra');
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Se ha registrado la entrada de forma correcta';
+                    $mail->Body    = 'Entrada, entrada,entrada ';
+                    $mail->AltBody = 'Prueba de envio de mensajes';
+                    $mail->send();
+                    echo "<script>
+                    alert('Ha ingresado de forma correcta');location.href='../index.php'</script>";
+                } catch (Exception $e) {
+                    echo "<script>alert('El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}');
+                    window.history.back()</script>";
+                }
+                break;
+            case Salida:
+                $mail = new PHPMailer(true);
+                try {
+
+                    $mail->SMTPDebug = 0;
+                    $mail->isSMTP();
+                    $mail->Host       = $HOST;
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = $USERNAMECORREO;
+                    $mail->Password   = $PASSWORDC;
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port       = $PORTC;
+                    $mail->setFrom($USERNAMECORREO, $NAMEC);
+                    $mail->addAddress('jesus.becerra@wiedii.co', 'Jesus Becerra');
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Se ha registrado la entrada de forma correcta';
+                    $mail->Body    = 'Salida, salida, salida';
+                    $mail->AltBody = 'Prueba de envio de mensajes';
+                    $mail->send();
+                    echo "<script>
+                    alert('Ha salido de forma correcta');location.href='../index.php'</script>";
+                } catch (Exception $e) {
+                    echo "<script>alert('El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}');
+                    window.history.back()</script>";
+                }
+                break;
+            case Salmorzar:
+
+                break;
+        }
+    }
 }
-        
 ?>

@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 
 <div>
-if
+
 <table class="fmensaje">
     <tr>
         <td>

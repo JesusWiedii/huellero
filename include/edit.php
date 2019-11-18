@@ -5,6 +5,7 @@ $nombre = '';
 $huella = '';
 $correo = '';
 $equipo = '';
+$contrasena='';
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
@@ -14,10 +15,13 @@ if (isset($_GET['id'])) {
     $row = mysqli_fetch_array($result);
     $nombre = $row['nombre_usu'];
     $huella = $row['huella'];
+    $contrasena=$row['contrasena'];
     $equipo = $row['nombre_equipo'];
     $correo = $row['correo'];
     $estado = $row['estado'];
     $id_team = $row['Id_equipo'];
+    $admini=$row['admini'];
+    $fecha=$row['fecha'];
   }
 }
 
@@ -28,14 +32,16 @@ if (isset($_POST['update'])) {
   $equipo = $_POST['equipo'];
   $correo = $_POST['correo'];
   $deshab = $_POST['desha'];
-  if (!empty($nombre) && !empty($correo) && !empty($huella)) {
+  $admini=$_POST['admini'];
+  $contrasena=$_POST['contrasena'];
+    if (!empty($nombre) && !empty($correo) && !empty($huella) &&!empty($contrasena)) {
     $buscar = "SELECT * FROM usuarios WHERE id!=$id and huella=$huella";
     $resultado = mysqli_query($conn, $buscar);
-    $jaja = mysqli_num_rows($resultado);
-    echo $jaja;
+   
     if (mysqli_num_rows($resultado) == 0) {
       $query = "UPDATE usuarios set nombre_usu = '$nombre', 
-     huella='$huella', Id_equipo = '$equipo', correo='$correo', estado='$deshab' WHERE id=$id";
+     huella='$huella', Id_equipo = '$equipo', correo='$correo', estado='$deshab', 
+     contrasena='$contrasena', admini='$admini' WHERE id=$id";
       $result = mysqli_query($conn, $query);
       if ($result) {
         echo "<script>
@@ -48,6 +54,7 @@ if (isset($_POST['update'])) {
     echo ("<script>alert('Un campo esta vacio');window.history.back()</script>");
   }
 }
+
 
 ?>
 <?php include('header.php'); ?>
@@ -72,6 +79,16 @@ if (isset($_POST['update'])) {
             Huella:
             <input name="huella" value="<?php echo $huella; ?>">
             <br>
+            Contraseña:
+            <input name="contrasena" value="<?php echo $contrasena; ?>">
+            <br>
+            Añadido en: <?php echo $row['fecha']; ?>
+            <br>
+            Administrador:
+            <input type="radio" name="admini" class="chkbox" value="No"checked>No
+            <input type="radio" name="admini" class="chkbox" value="Si" >Si
+            <br>
+            Estado:
             <input type="radio" name="desha" class="chkbox" value="No">Deshabilitado
             <input type="radio" name="desha" class="chkbox" value="Si" checked>Habilitado
             <br>

@@ -11,9 +11,6 @@ if(isset($_GET['id'])) {
   }
   echo "<script>
   alert('Eliminado de forma correcta');location.href='admuse.php'</script>";
-//   $_SESSION['message'] = 'Task Removed Successfully';
-//   $_SESSION['message_type'] = 'danger';
-//   header('Location: index.php');
 }
 
 ?>
