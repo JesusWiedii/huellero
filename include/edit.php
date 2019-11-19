@@ -35,7 +35,7 @@ if (isset($_POST['update'])) {
   $admini=$_POST['admini'];
   $contrasena=$_POST['contrasena'];
     if (!empty($nombre) && !empty($correo) && !empty($huella) &&!empty($contrasena)) {
-    $buscar = "SELECT * FROM usuarios WHERE id!=$id and huella=$huella";
+    $buscar = "SELECT * FROM usuarios WHERE id!=$id and (huella=$huella or nombre_usu='$nombre')" ;
     $resultado = mysqli_query($conn, $buscar);
    
     if (mysqli_num_rows($resultado) == 0) {
@@ -48,7 +48,7 @@ if (isset($_POST['update'])) {
             alert('Guardado de forma correcta');location.href='admuse.php'</script>";
       }
     } else {
-      echo ("<script>alert('Ya hay alguien adicional con esta huella');window.history.back()</script>");
+      echo ("<script>alert('Ya hay alguien adicional con esta huella/nombre');window.history.back()</script>");
     }
   } else {
     echo ("<script>alert('Un campo esta vacio');window.history.back()</script>");

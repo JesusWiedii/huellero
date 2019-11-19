@@ -18,8 +18,8 @@
         </select> <br> Huella: <input type="text" name="huellanuevo" id="huellanuevo">
         <br>Contraseña: <input type="text" name="contrasena" id="contrasena"> <br>
         Administrador:
-            <input type="radio" class="chkbox" name="admin" value="No" checked >No
-            <input type="radio" class="chkbox" name="admin" value="Si" >Si
+            <input type="radio" class="chkbox" name="administrador" value="No" checked >No
+            <input type="radio" class="chkbox" name="administrador" value="Si" >Si
             <br>
             <input type="submit" class="bguarda btn" name='guardar_persona' value="Guardar">
         </p>

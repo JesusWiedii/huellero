@@ -19,32 +19,24 @@
     <form action="include/registro.php" method="post">
         <br><br>
         <div class="row">
-            <div class="col-xs-4 col-md-4">
-                <input type="submit" name="operacion" class="menuusu" value="Entrada">
-            </div>
-            <div class="col-xs-4 col-md-4">
-                <h2 class="txtmb" style="margin-top:5vw;">Usuario
-                    <br><input type="text" name="user" style="width:70%;text-align:center;" autofocus="autofocus">
+            
+            <div class="col-xs-6 col-md-6">
+                <h2 class="txtmb" style="margin-top:5vw;">Huella
+                    <br><input type="text" name="user" id="usern" style="width:70%;text-align:center;" 
+                    autofocus="autofocus" onblur="blurFunction()">
+                    
                 </h2>
             </div>
-            <div class="col-xs-4 col-md-4">
-                <input type="submit" name="operacion" class="menuusu" value="Salida">
-            </div>
-
-
-            <!-- <div class="col-xs-6 col-md-6">
-                <button type="submit" name="operacion" class="lunch" value="Olunch">Sale a almorzar</button>
-            </div>
             <div class="col-xs-6 col-md-6">
-                <button type="submit" name="operacion" class="lunch" value="Ilunch">Entra de almorzar</button>
-            </div> -->
+                <input type="submit" name="operacion" class="menuusu" value="Ingreso-Salida">
+            </div>
             <div class="col-xs-6 col-md-6">
                 <a href="include/ingadmin.php">
                     <button class="badmin" type="button" class="">
                         <img src="img/engrana.svg" alt="" class="eadmin"></button></a>
             </div>
             <div class="col-xs-6 col-md-6">
-                <button type="submit" name="operacion" value="Enviar al correo" style="background-color: transparent;
+                <button type="submit" name="operacion" value="Correo" style="background-color: transparent;
                 color: transparent;border-color: transparent;"><img src="img/correo.svg" alt="" style="width: 30vw;
                 margin-top: 2vw;"></button>
             </div>
@@ -55,6 +47,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/reloj.js"></script>
+    <script src="js/funciones.js"></script>
 
 </footer>
 
