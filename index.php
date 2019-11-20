@@ -36,7 +36,7 @@
                         <img src="img/engrana.svg" alt="" class="eadmin"></button></a>
             </div>
             <div class="col-xs-6 col-md-6">
-                <button type="submit" name="operacion" value="Correo" style="background-color: transparent;
+                <button type="submit" name="operacion" value="correo" style="background-color: transparent;
                 color: transparent;border-color: transparent;"><img src="img/correo.svg" alt="" style="width: 30vw;
                 margin-top: 2vw;"></button>
             </div>

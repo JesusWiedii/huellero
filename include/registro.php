@@ -94,55 +94,63 @@ if (!empty($user)) {
                         }
                     }
                     break;
-                case 'Correo':
-                    $query="SELECT  Id_fecha, departure_time, entry_time 
+                case 'correo':
+
+                    $query = "SELECT  Fecha, departure_time, entry_time  
                     FROM registro 
                     WHERE id= '$iduser'
                     and Fecha <= CURDATE() and Fecha >= DATE_SUB(CURDATE(), INTERVAL 15 DAY)
-                    GROUP BY  Id_fecha, departure_time, entry_time 
-                    ORDER BY Id_fecha DESC";
-                    $bodymsg = 'Salida, Salida, Salida';
+                    GROUP BY  Fecha, departure_time, entry_time  
+                    ORDER BY Fecha DESC";
+                    $result = mysqli_query($conn, $query);
+                    $html = "";
+                    $bodymesage = 'Este es el informe de las entradas y salidas de los ultimos 15 dias: 
+                        ' . $nameuser . ' 
+                    <table class="table table-bordered" style="font-size: 2vw;"id="tablausu">
+                        <thead>
+                        <tr>
+                            <th>Fecha de ingreso</th>
+                            <th>Hora de ingreso</th>
+                            <th>Hora de salida</th>
+                        </tr> </thead>
+                        <tbody>
+                        ';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $bodymesage .= '
+                            <tr>
+                                <td>' . $row['Fecha'] . '</td>
+                                <td>' . $row['entry_time'] . '</td>
+                                <td>' . $row['departure_time'] . '</td>
+                            </tr>';
+                    }
+                    $bodymesage .= '</tbody></table>';
                     $alertmsg = "<script>
-                    alert('Ha salido de forma correcta');location.href='../index.php'</script>";
-                    break;
-                case 'Olunch':
-                    $bodymsg = 'Registro de salida a almorzar, registrado de forma exitosa';
-                    $alertmsg = "<script>
-                    alert('Registro de salida a almorzar, registrado de forma exitosa';
-                    location.href='../index.php'</script>";
-                    break;
-                case 'Ilunch':
-                    $bodymsg = 'Registro de entrada de almorzar, registrado de forma exitosa';
-                    $altbodymsg = 'Salida a almorzar, prueba';
-                    $alertmsg = "<script>
-                        alert('Registro de entrada a almorzar, registrado de forma exitosa');
-                        location.href='../index.php'</script>";
+                    alert('Su registro se ha enviado de forma correcta');location.href='../index.php'</script>";
                     break;
             }
+            $mail = new PHPMailer(true);
+            try {
 
-            // $mail = new PHPMailer(true);
-            // try {
-
-            //     $mail->SMTPDebug = 0;
-            //     $mail->isSMTP();
-            //     $mail->Host       = $HOST;
-            //     $mail->SMTPAuth   = true;
-            //     $mail->Username   = $USERNAMECORREO;
-            //     $mail->Password   = $PASSWORDC;
-            //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            //     $mail->Port       = $PORTC;
-            //     $mail->setFrom($USERNAMECORREO, $NAMEC);
-            //     $mail->addAddress($mailuser, $nameuser);
-            //     $mail->isHTML(true);
-            //     $mail->Subject = $subjectmsg;
-            //     $mail->Body    = $bodymesage;
-            //     $mail->AltBody = $altbodymsg;
-            //     $mail->send();
-            //     echo $alertmsg;
-            // } catch (Exception $e) {
-            //     echo "<script>alert('El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}');
-            //         window.history.back()</script>";
-            // }
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host       = $HOST;
+                $mail->SMTPAuth   = true;
+                $mail->Username   = $USERNAMECORREO;
+                $mail->Password   = $PASSWORDC;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port       = $PORTC;
+                $mail->setFrom($USERNAMECORREO, $NAMEC);
+                $mail->addAddress($mailuser, $nameuser);
+                $mail->isHTML(true);
+                $mail->Subject = $subjectmsg;
+                $mail->Body    = $bodymesage;
+                $mail->AltBody = $altbodymsg;
+                $mail->send();
+                echo $alertmsg;
+            } catch (Exception $e) {
+                echo "<script>alert('El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}');
+                            window.history.back()</script>";
+            }
         } else echo ("<script>
         alert('La huella no se reconoce');location.href='../index.php'</script>");
     }
