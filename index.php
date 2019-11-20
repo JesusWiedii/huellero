@@ -29,7 +29,6 @@
             </div>
             <div class="col-xs-6 col-md-6">
                 <button type="submit" name="operacion" class="menuusu" value="registro">Ingreso/Salida</button>
-                <!--<input type="submit" name="operacion" class="menuusu" value="Ingreso-Salida">-->
             </div>
             <div class="col-xs-6 col-md-6">
                 <a href="include/ingadmin.php">

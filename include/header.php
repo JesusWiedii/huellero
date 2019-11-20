@@ -1,5 +1,5 @@
 <?php include ("../db.php");
-include ("../mail/configmail.php")
+include ("../mail/configmail.php");
 ?>
 <html lang="es">
 <head>
