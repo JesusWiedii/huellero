@@ -29,38 +29,39 @@ if (!empty($user)) {
         $iduser = $row['id'];
         if (mysqli_num_rows($resultr) == 1) {
             switch ($n) {
-                case Ingreso - Salida:
-                    $query = "SELECT MAX(Fecha) FROM registro WHERE id=$iduser and Fecha=CURDATE()";
-                    $resultm = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_array($resultm);
-                    $var=mysqli_num_rows($resultm);
-                    echo $var;
-                    if (mysqli_num_rows($resultm) == 1) {
+                case 'registro':
+                    $query = "SELECT COUNT(Fecha) AS total FROM registro WHERE id='$iduser' and Fecha=CURDATE()";
+                     $resultm = mysqli_query($conn, $query);
+                    $var = mysqli_fetch_assoc($resultm); 
+                    $num= $var['total'];
+                    echo 'jaq';
+                    echo $num; 
+                    /* if ($var == 1) {
                         echo 'uno';
                     }
                     else {
                         echo 'solo';
-                    }
+                    } */
 
                     $bodymesage = 'jaja';
                     $altbodymsg = 'jaja';
                     // $alertmsg = "<script>
                     // alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
                     break;
-                case Salida:
+                case 'Salida':
                     $bodymsg = 'Salida, Salida, Salida';
                     $altbodymsg = 'Salida, prueba';
                     $alertmsg = "<script>
                     alert('Ha salido de forma correcta');location.href='../index.php'</script>";
                     break;
-                case Olunch:
+                case 'Olunch':
                     $bodymsg = 'Registro de salida a almorzar, registrado de forma exitosa';
                     $altbodymsg = 'Salida a almorzar, prueba';
                     $alertmsg = "<script>
                     alert('Registro de salida a almorzar, registrado de forma exitosa';
                     location.href='../index.php'</script>";
                     break;
-                case Ilunch:
+                case 'Ilunch':
                     $bodymsg = 'Registro de entrada de almorzar, registrado de forma exitosa';
                     $altbodymsg = 'Salida a almorzar, prueba';
                     $alertmsg = "<script>
