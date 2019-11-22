@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 20-11-2019 a las 21:26:59
+-- Tiempo de generación: 22-11-2019 a las 22:01:39
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.3.8
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `huellero` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `huellero`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `alert`
+--
+
+CREATE TABLE `alert` (
+  `Id_time` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `h_entry` time DEFAULT NULL,
+  `h_departure` time DEFAULT NULL,
+  `h_d_lunch` time DEFAULT NULL,
+  `h_e_lunch` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `alert`
+--
+
+INSERT INTO `alert` (`Id_time`, `id`, `h_entry`, `h_departure`, `h_d_lunch`, `h_e_lunch`) VALUES
+(1, 121, '07:00:00', '17:00:00', NULL, NULL),
+(2, 138, '08:00:00', '12:00:00', NULL, NULL),
+(3, 139, '09:00:00', '16:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -116,7 +140,19 @@ INSERT INTO `registro` (`Id_fecha`, `Fecha`, `entry_time`, `departure_time`, `id
 (61, '2019-11-20', '11:36:55', '11:36:55', 138),
 (62, '2019-11-20', '11:36:56', '11:36:57', 138),
 (63, '2019-11-20', '11:36:58', NULL, 138),
-(64, '2019-11-20', '13:13:20', '14:53:13', 121);
+(64, '2019-11-20', '13:13:20', '14:53:13', 121),
+(65, '2019-11-22', '11:30:35', '11:44:29', 121),
+(66, '2019-11-22', '11:51:19', '11:54:43', 138),
+(67, '2019-11-22', '11:53:41', '12:07:34', 121),
+(68, '2019-11-22', '12:08:19', '12:14:45', 138),
+(69, '2019-11-22', '12:37:45', '12:39:40', 138),
+(70, '2019-11-22', '12:37:50', NULL, 121),
+(71, '2019-11-22', '13:15:51', '13:16:46', 138),
+(72, '2019-11-22', '13:21:57', '13:28:19', 138),
+(73, '2019-11-22', '14:46:14', '14:54:12', 138),
+(74, '2019-11-22', '14:54:36', '15:08:47', 138),
+(75, '2019-11-22', '14:55:55', NULL, 139),
+(76, '2019-11-22', '15:12:03', '15:33:30', 138);
 
 -- --------------------------------------------------------
 
@@ -150,6 +186,14 @@ INSERT INTO `usuarios` (`id`, `nombre_usu`, `huella`, `contrasena`, `Id_equipo`,
 --
 
 --
+-- Indices de la tabla `alert`
+--
+ALTER TABLE `alert`
+  ADD PRIMARY KEY (`Id_time`),
+  ADD UNIQUE KEY `id_2` (`id`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indices de la tabla `equipos`
 --
 ALTER TABLE `equipos`
@@ -176,6 +220,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `alert`
+--
+ALTER TABLE `alert`
+  MODIFY `Id_time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
@@ -185,7 +235,7 @@ ALTER TABLE `equipos`
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `Id_fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `Id_fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -196,6 +246,12 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `alert`
+--
+ALTER TABLE `alert`
+  ADD CONSTRAINT `alert_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `registro`
