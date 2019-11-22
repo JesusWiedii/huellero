@@ -102,7 +102,7 @@ if (!empty($user)) {
                     $html = "";
                     $bodymesage = 'Este es el informe de las entradas y salidas de los ultimos 15 dias: 
                         ' . $nameuser . ' 
-                    <table class="table table-bordered" style="font-size: 2vw;"id="tablausu">
+                    <table class="table table-bordered" style="font-size: 25px;"id="tablausu">
                         <thead>
                         <tr>
                             <th>Fecha de ingreso</th>

@@ -22,7 +22,7 @@
 
             <div class="col-xs-6 col-md-6">
                 <h2 class="txtmb" style="margin-top:5vw;"> Ingrese su huella
-                    <br><input type="text" name="user" id="usern" style="width:70%;text-align:center;" autofocus="autofocus" onblur="blurFunction()">
+                    <input type="text" name="user" id="usern" style="width:70%;text-align:center;" autofocus="autofocus" onblur="blurFunction()">
                     <button type="submit" name="operacion" value="correo" style="background-color: transparent;
                 color: transparent;border-color: transparent;margin-top: 6vw;"><img src="img/correo.svg" alt="" style="width: 20vw;
                 "></button>
