@@ -2,9 +2,9 @@
   <div class="widget">
     <table class="fecha">
       <tr>
-        <td>
+        <!-- <td>
           <p id="diaSemana" class="diaSemana"></p>
-        </td>
+        </td> -->
         <td>
           <p>&nbsp</p>
         </td>
@@ -27,6 +27,7 @@
       </tr>
 
     </table>
+    <br>
     <table class="reloj">
       <tr>
         <td>

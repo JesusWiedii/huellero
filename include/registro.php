@@ -1,6 +1,4 @@
-<?php include("../db.php"); ?>
-
-<?php
+<?php include("../db.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -42,11 +40,11 @@ if (!empty($user)) {
                                     VALUES (CURDATE(), CURTIME(),'$iduser')";
                         $result = mysqli_query($conn, $getin);
                         if ($result) {
-                            $alertmsg = "<script>
-                    alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
-                            echo "<script>location.href='../index.php'</script>";
-                            $time_msg = date;
-                            $bodymesage = 'Su ingreso ha sido registrado de forma correcta' . date(": d/m/Y-h:i:sa");
+                            //         $alertmsg = "<script>
+                            // alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                            echo "<script>alert('Se ha registrado de forma correcta');
+                            location.href='../index.php'</script>";
+                            // $bodymesage = 'Su ingreso ha sido registrado de forma correcta' . date(": d/m/Y-h:i:sa");
                         } else echo ("<script>
                             alert('No ha guardado, error en la base de datos');window.history.back()</script>");
                     } else {
@@ -67,12 +65,11 @@ if (!empty($user)) {
                                 WHERE Id_fecha='$id_fecha'";
                                 $result = mysqli_query($conn, $query);
                                 if ($result) {
-                                    $alertmsg = "<script>
-                            alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
-                                    echo "<script>location.href='../index.php'</script>";
-                                    $time_msg = date;
-                                    $bodymesage = 'Su salida ha sido registrado de forma correcta'
-                                        . date(": d/m/Y-h:i:sa");
+                                    //         $alertmsg = "<script>
+                                    // alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                                    echo "<script>alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                                    // $bodymesage = 'Su salida ha sido registrado de forma correcta'
+                                    //     . date(": d/m/Y-h:i:sa");
                                 } else echo ("<script>
                                     alert('No ha guardado, error en la base de datos');window.history.back()</script>");
                             } else {
@@ -80,12 +77,11 @@ if (!empty($user)) {
                                     VALUES (CURDATE(), CURTIME(),'$iduser')";
                                 $result = mysqli_query($conn, $getin);
                                 if ($result) {
-                                    $alertmsg = "<script>
-                            alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
-                                    echo "<script>location.href='../index.php'</script>";
-                                    $time_msg = date;
-                                    $bodymesage = 'Su ingreso ha sido registrado de forma correcta'
-                                        . date(": d/m/Y-h:i:sa");
+                                    //         $alertmsg = "<script>
+                                    // alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                                    echo "<script>alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                                    // $bodymesage = 'Su ingreso ha sido registrado de forma correcta'
+                                    //     . date(": d/m/Y-h:i:sa");
                                 } else echo ("<script>
                                     alert('No ha guardado, error en la base de datos');window.history.back()</script>");
                             }
@@ -101,7 +97,7 @@ if (!empty($user)) {
                     WHERE id= '$iduser'
                     and Fecha <= CURDATE() and Fecha >= DATE_SUB(CURDATE(), INTERVAL 15 DAY)
                     GROUP BY  Fecha, departure_time, entry_time  
-                    ORDER BY Fecha DESC";
+                    ORDER BY Fecha DESC, entry_time DESC ";
                     $result = mysqli_query($conn, $query);
                     $html = "";
                     $bodymesage = 'Este es el informe de las entradas y salidas de los ultimos 15 dias: 
@@ -126,34 +122,34 @@ if (!empty($user)) {
                     $bodymesage .= '</tbody></table>';
                     $alertmsg = "<script>
                     alert('Su registro se ha enviado de forma correcta');location.href='../index.php'</script>";
-                    break;
-            }
-            $mail = new PHPMailer(true);
-            try {
 
-                $mail->SMTPDebug = 0;
-                $mail->isSMTP();
-                $mail->Host       = $HOST;
-                $mail->SMTPAuth   = true;
-                $mail->Username   = $USERNAMECORREO;
-                $mail->Password   = $PASSWORDC;
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port       = $PORTC;
-                $mail->setFrom($USERNAMECORREO, $NAMEC);
-                $mail->addAddress($mailuser, $nameuser);
-                $mail->isHTML(true);
-                $mail->Subject = $subjectmsg;
-                $mail->Body    = $bodymesage;
-                $mail->AltBody = $altbodymsg;
-                $mail->send();
-                echo $alertmsg;
-            } catch (Exception $e) {
-                echo "<script>alert('El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}');
+                    $mail = new PHPMailer(true);
+                    try {
+
+                        $mail->SMTPDebug = 0;
+                        $mail->isSMTP();
+                        $mail->Host       = $HOST;
+                        $mail->SMTPAuth   = true;
+                        $mail->Username   = $USERNAMECORREO;
+                        $mail->Password   = $PASSWORDC;
+                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                        $mail->Port       = $PORTC;
+                        $mail->setFrom($USERNAMECORREO, $NAMEC);
+                        $mail->addAddress($mailuser, $nameuser);
+                        $mail->isHTML(true);
+                        $mail->Subject = $subjectmsg;
+                        $mail->Body    = $bodymesage;
+                        $mail->AltBody = $altbodymsg;
+                        $mail->send();
+                        echo $alertmsg;
+                    } catch (Exception $e) {
+                        echo "<script>alert('El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}');
                             window.history.back()</script>";
+                    }
+                    break;
             }
         } else echo ("<script>
         alert('La huella no se reconoce');location.href='../index.php'</script>");
     }
 } else echo ("<script>
         alert('El campo esta vacio');window.history.back()</script>");
-?>
