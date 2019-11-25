@@ -48,7 +48,9 @@ if (!empty($user)) {
                         } else echo ("<script>
                             alert('No ha guardado, error en la base de datos');window.history.back()</script>");
                     } else {
-                        $query = "SELECT  Id_fecha, departure_time 
+
+                        $query = "SELECT  Id_fecha, departure_time, TIMEDIFF(CURTIME(), departure_time), 
+                                            TIMEDIFF(CURTIME(), entry_time) 
                                     FROM registro 
                                     WHERE id= '$iduser'
                                     and Fecha=CURDATE()  
@@ -58,7 +60,9 @@ if (!empty($user)) {
                         $row = mysqli_fetch_array($result);
                         $t_out = $row['departure_time'];
                         $id_fecha = $row['Id_fecha'];
-                        if ($result) {
+                        $time1 = $row['TIMEDIFF(CURTIME(), departure_time)'];
+                        $time2 = $row['TIMEDIFF(CURTIME(), entry_time)'];
+                        if ($result and ($time1 >= '00:15:00' or $time2 >= '00:15:00')) {
                             if (empty($t_out)) {
                                 $query = "UPDATE registro 
                                 set departure_time = CURTIME() 
@@ -67,7 +71,8 @@ if (!empty($user)) {
                                 if ($result) {
                                     //         $alertmsg = "<script>
                                     // alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
-                                    echo "<script>alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                                    echo "<script>alert('Se ha registrado de forma correcta');
+                                    location.href='../index.php'</script>";
                                     // $bodymesage = 'Su salida ha sido registrado de forma correcta'
                                     //     . date(": d/m/Y-h:i:sa");
                                 } else echo ("<script>
@@ -79,14 +84,16 @@ if (!empty($user)) {
                                 if ($result) {
                                     //         $alertmsg = "<script>
                                     // alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
-                                    echo "<script>alert('Se ha registrado de forma correcta');location.href='../index.php'</script>";
+                                    echo "<script>alert('Se ha registrado de forma correcta');
+                                    location.href='../index.php'</script>";
                                     // $bodymesage = 'Su ingreso ha sido registrado de forma correcta'
                                     //     . date(": d/m/Y-h:i:sa");
                                 } else echo ("<script>
                                     alert('No ha guardado, error en la base de datos');window.history.back()</script>");
                             }
                         } else {
-                            echo 'La base de datos no responde';
+                            echo ("<script> alert('Su registro ya fue realizado hace menos de 15 minutos');
+                            window.history.back()</script>");
                         }
                     }
                     break;
@@ -153,3 +160,4 @@ if (!empty($user)) {
     }
 } else echo ("<script>
         alert('El campo esta vacio');window.history.back()</script>");
+?>

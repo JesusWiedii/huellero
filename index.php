@@ -29,8 +29,8 @@
                 </h2>
             </div>
             <div class="col-xs-6 col-md-6">
-                <button type="submit" name="operacion" class="menuusu" value="registro">Ingreso o<br>Salida</button>
-
+                <button type="submit" name="operacion" class="menuusu" value="registro"> 
+                Ingreso o<br>Salida</button>
                 <?php include "include/reloj.php" ?>
             </div>
             <div class="col-xs-6 col-md-6">
