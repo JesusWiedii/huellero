@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 22-11-2019 a las 22:01:39
+-- Tiempo de generación: 26-11-2019 a las 22:06:23
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.3.8
 
@@ -42,35 +42,9 @@ CREATE TABLE `alert` (
 --
 
 INSERT INTO `alert` (`Id_time`, `id`, `h_entry`, `h_departure`, `h_d_lunch`, `h_e_lunch`) VALUES
-(1, 121, '07:00:00', '17:00:00', NULL, NULL),
-(2, 138, '08:00:00', '12:00:00', NULL, NULL),
-(3, 139, '09:00:00', '16:00:00', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `equipos`
---
-
-CREATE TABLE `equipos` (
-  `Id_equipo` int(11) NOT NULL,
-  `nombre_equipo` varchar(255) CHARACTER SET armscii8 NOT NULL,
-  `hora_entrada` time NOT NULL,
-  `hora_salida` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `equipos`
---
-
-INSERT INTO `equipos` (`Id_equipo`, `nombre_equipo`, `hora_entrada`, `hora_salida`) VALUES
-(1, 'Colocolo', '00:00:00', '17:00:00'),
-(2, 'Lions', '00:00:00', '17:00:00'),
-(3, 'Margay', '00:00:00', '17:00:00'),
-(4, 'Geofrray', '00:00:00', '17:00:00'),
-(5, 'Cheetah', '00:00:00', '17:00:00'),
-(6, 'Ligers', '00:00:00', '17:00:00'),
-(7, 'Puma', '00:00:00', '17:00:00');
+(1, 121, '08:40:00', '17:00:00', '00:00:00', '00:00:00'),
+(2, 138, '08:20:00', '12:00:00', NULL, NULL),
+(3, 139, '08:20:00', '16:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +126,10 @@ INSERT INTO `registro` (`Id_fecha`, `Fecha`, `entry_time`, `departure_time`, `id
 (73, '2019-11-22', '14:46:14', '14:54:12', 138),
 (74, '2019-11-22', '14:54:36', '15:08:47', 138),
 (75, '2019-11-22', '14:55:55', NULL, 139),
-(76, '2019-11-22', '15:12:03', '15:33:30', 138);
+(76, '2019-11-22', '15:12:03', '15:33:30', 138),
+(81, '2019-11-25', '09:03:21', NULL, 121),
+(82, '2019-11-25', '14:39:01', NULL, 138),
+(83, '2019-11-26', '15:24:29', NULL, 121);
 
 -- --------------------------------------------------------
 
@@ -165,21 +142,21 @@ CREATE TABLE `usuarios` (
   `nombre_usu` varchar(255) DEFAULT NULL,
   `huella` varchar(255) NOT NULL,
   `contrasena` varchar(255) NOT NULL,
-  `Id_equipo` int(11) NOT NULL,
   `correo` varchar(255) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` char(2) NOT NULL,
-  `admini` char(2) NOT NULL
+  `admini` char(2) NOT NULL,
+  `username` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre_usu`, `huella`, `contrasena`, `Id_equipo`, `correo`, `fecha`, `estado`, `admini`) VALUES
-(121, 'Jesus Becerra ', '1234', '1234', 1, 'becerra.jesusantonio@gmail.com', '2019-11-19 19:55:33', 'Si', 'No'),
-(138, 'Jesus Becerra R', '12345', '12345', 1, 'jesus.becerra@wiedii.co', '2019-11-19 20:46:09', 'Si', 'No'),
-(139, 'yorluis', '123', '123', 1, 'yorluis.vega@wiedii.co', '2019-11-19 20:50:15', 'Si', 'No');
+INSERT INTO `usuarios` (`id`, `nombre_usu`, `huella`, `contrasena`, `correo`, `fecha`, `estado`, `admini`, `username`) VALUES
+(121, 'Jesus Becerra ', '1234', '1234', 'becerra.jesusantonio@gmail.com', '2019-11-19 19:55:33', 'Si', 'Si', 'Regu'),
+(138, 'Jesus Becerra R', '12345', '12345', 'jesus.becerra@wiedii.co', '2019-11-19 20:46:09', 'Si', 'No', 'Reg'),
+(139, 'yorluis', '123', '123', 'yorluis vega', '2019-11-19 20:50:15', 'Si', 'No', 'Yor');
 
 --
 -- Índices para tablas volcadas
@@ -194,13 +171,6 @@ ALTER TABLE `alert`
   ADD KEY `id` (`id`);
 
 --
--- Indices de la tabla `equipos`
---
-ALTER TABLE `equipos`
-  ADD PRIMARY KEY (`Id_equipo`),
-  ADD UNIQUE KEY `nombre_equipo` (`nombre_equipo`);
-
---
 -- Indices de la tabla `registro`
 --
 ALTER TABLE `registro`
@@ -212,8 +182,7 @@ ALTER TABLE `registro`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `huella` (`huella`),
-  ADD KEY `id_equipo` (`Id_equipo`);
+  ADD UNIQUE KEY `huella` (`huella`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -226,22 +195,16 @@ ALTER TABLE `alert`
   MODIFY `Id_time` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `equipos`
---
-ALTER TABLE `equipos`
-  MODIFY `Id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `Id_fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `Id_fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- Restricciones para tablas volcadas
@@ -258,12 +221,6 @@ ALTER TABLE `alert`
 --
 ALTER TABLE `registro`
   ADD CONSTRAINT `registro_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Id_equipo`) REFERENCES `equipos` (`Id_equipo`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

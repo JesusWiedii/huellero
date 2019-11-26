@@ -99,7 +99,7 @@ if (!empty($user)) {
                     break;
                 case 'correo':
 
-                    $query = "SELECT  Fecha, departure_time, entry_time  
+                    $query = "SELECT  Fecha, departure_time, entry_time , TIMEDIFF(departure_time, entry_time)
                     FROM registro 
                     WHERE id= '$iduser'
                     and Fecha <= CURDATE() and Fecha >= DATE_SUB(CURDATE(), INTERVAL 15 DAY)
@@ -115,6 +115,7 @@ if (!empty($user)) {
                             <th>Fecha de ingreso</th>
                             <th>Hora de ingreso</th>
                             <th>Hora de salida</th>
+                            <th>Total de horas</th>
                         </tr> </thead>
                         <tbody>
                         ';
@@ -124,6 +125,7 @@ if (!empty($user)) {
                                 <td>' . $row['Fecha'] . '</td>
                                 <td>' . $row['entry_time'] . '</td>
                                 <td>' . $row['departure_time'] . '</td>
+                                <td>' . $row['TIMEDIFF(departure_time, entry_time)'] . '</td>
                             </tr>';
                     }
                     $bodymesage .= '</tbody></table>';
