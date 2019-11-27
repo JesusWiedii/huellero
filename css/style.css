@@ -188,7 +188,7 @@ body {
   /* max-width: 10vw; */
   margin: auto;
   background: transparent;
-  bottom: -100px;
+  bottom: -105px;
   right: 39px;
 }
 .widget {
@@ -481,7 +481,7 @@ textarea {
   background-color: rgba(238, 244, 245, 0.363);
   font-size: 4vw;
   font-size-adjust: none;
-  margin-top: 4vw;
+  margin-top: 0.5rem;
 }
 .chkbox {
   width: 6vw;
