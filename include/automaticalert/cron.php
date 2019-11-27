@@ -21,7 +21,7 @@ $altbodymsg = 'Registro exitoso';
 
 
 $query = "SELECT a.id, TIMEDIFF(CURTIME(), h_entry), TIMEDIFF(CURTIME(), h_departure), 
-            TIMEDIFF(CURTIME(), h_d_lunch),TIMEDIFF(CURTIME(), h_e_lunch)
+            TIMEDIFF(CURTIME(), h_d_lunch),TIMEDIFF(CURTIME(), h_e_lunch), h_entry, h_departure, h_d_lunch, h_e_lunch
         FROM alert a, usuarios u 
         WHERE u.estado='Si'
         and u.id=a.id";
@@ -30,15 +30,39 @@ $result = mysqli_query($conn, $query);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         $id_user = $row['id'];
-        $diff_entry = $row['TIMEDIFF(CURTIME(), h_entry)'];
-        $diff_departure = $row['TIMEDIFF(CURTIME(), h_departure)'];
-        $diff_d_lunch = $row['TIMEDIFF(CURTIME(), h_d_lunch)'];
         $diff_e_lunch = $row['TIMEDIFF(CURTIME(), h_e_lunch)'];
+        $h_entry=$row['h_entry'];
+        $h_departure=$row['h_departure'];
+        $h_d_lunch=$row['h_d_lunch'];
+        $h_e_lunch=$row['h_e_lunch'];
+        if ($h_entry=='00:00:00'){
+            $diff_entry='';
+        }
+        else{
+            $diff_entry = $row['TIMEDIFF(CURTIME(), h_entry)'];
+        }
+        if ($h_departure=='00:00:00'){
+            $diff_departure='';
+        }
+        else{
+            $diff_departure = $row['TIMEDIFF(CURTIME(), h_departure)'];
+        }
+        if ($h_d_lunch=='00:00:00'){
+            $h_d_lunch='';
+        }
+        else{
+            $diff_d_lunch = $row['TIMEDIFF(CURTIME(), h_d_lunch)'];
+        }
+        if ($h_e_lunch=='00:00:00'){
+            $h_e_lunch='';
+        }
+        else{
+            $diff_e_lunch = $row['TIMEDIFF(CURTIME(), h_d_lunch)'];
+        }
         
-
         $query = "SELECT COUNT(Fecha) AS total 
                     FROM registro 
-                    WHERE id='$iduser' 
+                    WHERE id='$id_user' 
                     and Fecha=CURDATE()";
         $resultm = mysqli_query($conn, $query);
         $var = mysqli_fetch_assoc($resultm);
@@ -63,7 +87,7 @@ if ($result) {
         else {
             $query = "SELECT  departure_time 
                             FROM registro 
-                            WHERE id= '$iduser'
+                            WHERE id= '$id_user'
                             and Fecha=CURDATE()  
                             GROUP BY departure_time 
                             ORDER BY Id_fecha DESC LIMIT 1";
@@ -122,9 +146,11 @@ if ($result) {
                 case 'no':
                 break;
         }
-    }
-} else {
+    } 
+} 
+ else {
     echo 'no funciona';
-}
+} 
+  
 
 ?>
