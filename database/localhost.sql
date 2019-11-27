@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 26-11-2019 a las 22:06:23
+-- Tiempo de generación: 27-11-2019 a las 19:06:26
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.3.8
 
@@ -43,8 +43,8 @@ CREATE TABLE `alert` (
 
 INSERT INTO `alert` (`Id_time`, `id`, `h_entry`, `h_departure`, `h_d_lunch`, `h_e_lunch`) VALUES
 (1, 121, '08:40:00', '17:00:00', '00:00:00', '00:00:00'),
-(2, 138, '08:20:00', '12:00:00', NULL, NULL),
-(3, 139, '08:20:00', '16:00:00', NULL, NULL);
+(2, 138, '08:20:00', '12:00:00', '00:00:00', '00:00:00'),
+(3, 139, '08:20:00', '16:00:00', '00:00:00', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,9 +154,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre_usu`, `huella`, `contrasena`, `correo`, `fecha`, `estado`, `admini`, `username`) VALUES
-(121, 'Jesus Becerra ', '1234', '1234', 'becerra.jesusantonio@gmail.com', '2019-11-19 19:55:33', 'Si', 'Si', 'Regu'),
-(138, 'Jesus Becerra R', '12345', '12345', 'jesus.becerra@wiedii.co', '2019-11-19 20:46:09', 'Si', 'No', 'Reg'),
-(139, 'yorluis', '123', '123', 'yorluis vega', '2019-11-19 20:50:15', 'Si', 'No', 'Yor');
+(121, 'Jesus Becerra ', '1234', '$2y$04$Yt8d6b6uklXYetbpVqjOK.5CubONVbEYQ9HDhkeCfLZbdn240C8xW', 'becerra.jesusantonio@gmail.com', '2019-11-19 19:55:33', 'Si', 'Si', 'Regu'),
+(138, 'Jesus Becerra R', '12345', '$2y$04$SyeENYjbvKILYkL.w6mdfOqySA5am6JkSEg/Z3KOdn.6xBhASE3jW', 'jesus.becerra@wiedii.co', '2019-11-19 20:46:09', 'Si', 'No', 'Reg'),
+(139, 'yorluis', '123', '$2y$04$.Qnyu7dlGyYqAe98nnR6Ke9hhoh0ZSOsmtq95jw9.TuWNRoHbnYDC', 'yorluis vega', '2019-11-19 20:50:15', 'No', 'No', 'Yor');
 
 --
 -- Índices para tablas volcadas
@@ -198,13 +198,13 @@ ALTER TABLE `alert`
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `Id_fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `Id_fecha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- Restricciones para tablas volcadas
